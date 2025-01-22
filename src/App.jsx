@@ -4,6 +4,7 @@ import 'bootstrap-icons/font/bootstrap-icons.min.css'
 import MainLayout from '@/layouts/MainLayout'
 import Home from '@/pages/Home'
 import Login from '@/pages/Login'
+import ManageSuppliers from '@/pages/ManageSuppliers'
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
 
         <Route path='/' Component={MainLayout}>
           <Route index Component={Home} />
+          <Route path='/manage-suppliers' Component={ManageSuppliers} />
         </Route>
       </Routes>
     </Router>

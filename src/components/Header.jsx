@@ -12,7 +12,7 @@ export const Header = () => {
                 <span>{label}</span>
               </a>
 
-              <ul className='hidden group-hover:flex absolute top-full left-0 shadow-md rounded flex-col z-10 w-48'>
+              <ul className='hidden group-hover:flex absolute top-full left-0 shadow-md rounded flex-col z-50 w-48'>
                 {options.map(({ label, link }, idx) => (
                   <li key={idx}>
                     <Link
@@ -83,7 +83,7 @@ const sections = [
     icon: 'person-fill-gear',
     label: 'Administración',
     options: [
-      { label: 'Gestión de proveedores', link: '/#Gestión_de_proveedores' },
+      { label: 'Gestión de proveedores', link: '/manage-suppliers' },
       { label: 'Registrar personal de trabajo', link: '/#Registrar_personal_de_trabajo' },
       { label: 'Kardex del personal', link: '/#Kardex_del_personal' },
       { label: 'Listado de todo el personal', link: '/#Listado_de_todo_el_personal' },
