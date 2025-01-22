@@ -5,28 +5,23 @@ export const Header = () => {
     <header className='bg-[#5e2222] w-full'>
       <nav className='mx-auto container h-full'>
         <ul className='flex h-full gap-5'>
-          {sections.map(({ icon, label, options, active }, idx) => (
+          {sections.map(({ icon, label, options }, idx) => (
             <li key={idx} className='relative group h-full'>
-              <button
-                className='text-white py-3 text-xl flex flex-col items-center hover:text-black hover:cursor-pointer group-hover:text-black duration-100 disabled:opacity-40'
-                disabled={!active}
-              >
+              <a className='text-white py-3 text-xl flex flex-col items-center hover:cursor-pointer group-hover:text-black duration-100'>
                 <i className={`bi bi-${icon}`} />
                 <span>{label}</span>
-              </button>
+              </a>
 
-              {active && (
-                <ul className='hidden group-hover:flex absolute top-full left-0 shadow-md rounded flex-col z-10 w-48'>
-                  {options.map(({ label, link }, idx) => (
-                    <li key={idx}>
-                      <Link
-                        to={link}
-                        className='px-4 py-2 hover:bg-gray-100 text-black block bg-white'
-                      >{label}</Link>
-                    </li>
-                  ))}
-                </ul>
-              )}
+              <ul className='hidden group-hover:flex absolute top-full left-0 shadow-md rounded flex-col z-10 w-48'>
+                {options.map(({ label, link }, idx) => (
+                  <li key={idx}>
+                    <Link
+                      to={link}
+                      className='px-4 py-2 hover:bg-gray-100 text-black block bg-white text-sm'
+                    >{label}</Link>
+                  </li>
+                ))}
+              </ul>
             </li>
           ))}
         </ul>
@@ -39,7 +34,6 @@ const sections = [
   {
     icon: 'person-circle',
     label: 'Clientes',
-    active: false,
     options: [
       { label: 'Registrar cliente', link: '/#Registrar_cliente' },
       { label: 'Kardex del cliente', link: '/#Kardex_del_cliente' },
@@ -50,7 +44,6 @@ const sections = [
   {
     icon: 'tag-fill',
     label: 'Productos',
-    active: false,
     options: [
       { label: 'Añadir marco', link: '/#Añadir_marco' },
       { label: 'Personalizar marco', link: '/#Personalizar_marco' },
@@ -60,7 +53,6 @@ const sections = [
   {
     icon: 'hammer',
     label: 'Materiales',
-    active: false,
     options: [
       { label: 'Registrar material e insumo', link: '/#Registrar_material_e_insumo' },
       { label: 'Lista de materiales e insumos', link: '/#Lista_de_materiales_e_insumos' },
@@ -71,7 +63,6 @@ const sections = [
   {
     icon: 'exclamation-triangle-fill',
     label: 'Reportes',
-    active: false,
     options: [
       { label: 'Entregas concluidas', link: '/#Entregas_concluidas' },
       { label: 'Reporte de materiales', link: '/#Reporte_de_materiales' },
@@ -81,7 +72,6 @@ const sections = [
   {
     icon: 'card-list',
     label: 'Pedidos',
-    active: false,
     options: [
       { label: 'Registrar pedido', link: '/#Registrar_pedido' },
       { label: 'Lista de pedidos pendientes', link: '/#Lista_de_pedidos_pendientes' },
@@ -92,7 +82,6 @@ const sections = [
   {
     icon: 'person-fill-gear',
     label: 'Administración',
-    active: false,
     options: [
       { label: 'Gestión de proveedores', link: '/#Gestión_de_proveedores' },
       { label: 'Registrar personal de trabajo', link: '/#Registrar_personal_de_trabajo' },
@@ -100,5 +89,5 @@ const sections = [
       { label: 'Listado de todo el personal', link: '/#Listado_de_todo_el_personal' },
       { label: 'Soporte y ayuda', link: '/#Soporte_y_ayuda' },
     ]
-  },
+  }
 ]
