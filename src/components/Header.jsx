@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 export const Header = () => {
   return (
@@ -12,13 +12,15 @@ export const Header = () => {
                 <span>{label}</span>
               </a>
 
-              <ul className='hidden group-hover:flex absolute top-full left-0 shadow-md rounded flex-col z-50 w-48'>
+              <ul className='hidden group-hover:flex absolute top-full left-0 shadow-md rounded flex-col z-50 w-48 bg-white'>
                 {options.map(({ label, link }, idx) => (
                   <li key={idx}>
                     <Link
                       to={link}
-                      className='px-4 py-2 hover:bg-gray-100 text-black block bg-white text-sm'
-                    >{label}</Link>
+                      className='px-4 py-2 hover:bg-gray-100 text-black block text-sm'
+                    >
+                      {label}
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -27,56 +29,56 @@ export const Header = () => {
         </ul>
       </nav>
     </header>
-  )
-}
+  );
+};
 
 const sections = [
   {
     icon: 'person-circle',
     label: 'Clientes',
     options: [
-      { label: 'Registrar cliente', link: '/#Registrar_cliente' },
-      { label: 'Kardex del cliente', link: '/#Kardex_del_cliente' },
-      { label: 'Lista de clientes', link: '/#Lista_de_clientes' },
-      { label: 'Historial de compras', link: '/#Historial_de_compras' },
+      { label: 'Registrar cliente', link: '/registrar-cliente' },
+      { label: 'Kardex del cliente', link: '/kardex_cliente' },
+      { label: 'Lista de clientes', link: '/lista_de_clientes' },  // 🔹 Enlace corregido
+      { label: 'Historial de compras', link: '/historial_compras' },
     ]
   },
   {
     icon: 'tag-fill',
     label: 'Productos',
     options: [
-      { label: 'Añadir marco', link: '/#Añadir_marco' },
-      { label: 'Personalizar marco', link: '/#Personalizar_marco' },
-      { label: 'Ver todos los marcos', link: '/#Ver_todos_los_marcos' },
+      { label: 'Añadir marco', link: '/añadir_marco' },
+      { label: 'Personalizar marco', link: '/personalizar_marco' },
+      { label: 'Ver todos los marcos', link: '/ver_todos_los_marcos' },
     ]
   },
   {
     icon: 'hammer',
     label: 'Materiales',
     options: [
-      { label: 'Registrar material e insumo', link: '/#Registrar_material_e_insumo' },
-      { label: 'Lista de materiales e insumos', link: '/#Lista_de_materiales_e_insumos' },
-      { label: 'Inventario actual', link: '/#Inventario_actual' },
-      { label: 'Especificaciones tecnicas', link: '/#Especificaciones_tecnicas' },
+      { label: 'Registrar material e insumo', link: '/registrar_material' },
+      { label: 'Lista de materiales e insumos', link: '/lista_materiales' },
+      { label: 'Inventario actual', link: '/inventario_actual' },
+      { label: 'Especificaciones técnicas', link: '/especificaciones_tecnicas' },
     ]
   },
   {
     icon: 'exclamation-triangle-fill',
     label: 'Reportes',
     options: [
-      { label: 'Entregas concluidas', link: '/#Entregas_concluidas' },
-      { label: 'Reporte de materiales', link: '/#Reporte_de_materiales' },
-      { label: 'Fabricaciones mensuales', link: '/#Fabricaciones_mensuales' },
+      { label: 'Entregas concluidas', link: '/entregas_concluidas' },
+      { label: 'Reporte de materiales', link: '/reporte_materiales' },
+      { label: 'Fabricaciones mensuales', link: '/fabricaciones_mensuales' },
     ]
   },
   {
     icon: 'card-list',
     label: 'Pedidos',
     options: [
-      { label: 'Registrar pedido', link: '/#Registrar_pedido' },
-      { label: 'Lista de pedidos pendientes', link: '/#Lista_de_pedidos_pendientes' },
-      { label: 'Actualizar estado de pedido', link: '/#Actualizar_estado_de_pedido' },
-      { label: 'Control de carga de trabajo', link: '/#Control_de_carga_de_trabajo' },
+      { label: 'Registrar pedido', link: '/registrar_pedido' },
+      { label: 'Lista de pedidos pendientes', link: '/pedidos_pendientes' },
+      { label: 'Actualizar estado de pedido', link: '/actualizar_pedido' },
+      { label: 'Control de carga de trabajo', link: '/control_carga' },
     ]
   },
   {
@@ -84,10 +86,10 @@ const sections = [
     label: 'Administración',
     options: [
       { label: 'Gestión de proveedores', link: '/manage-suppliers' },
-      { label: 'Registrar personal de trabajo', link: '/#Registrar_personal_de_trabajo' },
-      { label: 'Kardex del personal', link: '/#Kardex_del_personal' },
-      { label: 'Listado de todo el personal', link: '/#Listado_de_todo_el_personal' },
-      { label: 'Soporte y ayuda', link: '/#Soporte_y_ayuda' },
+      { label: 'Registrar personal de trabajo', link: '/registrar_personal' },
+      { label: 'Kardex del personal', link: '/kardex_personal' },
+      { label: 'Listado de todo el personal', link: '/listado_personal' },
+      { label: 'Soporte y ayuda', link: '/soporte' },
     ]
   }
-]
+];

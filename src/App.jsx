@@ -5,6 +5,8 @@ import MainLayout from '@/layouts/MainLayout'
 import Home from '@/pages/Home'
 import Login from '@/pages/Login'
 import ManageSuppliers from '@/pages/ManageSuppliers'
+import RegisterClient from '@/pages/RegisterClient';
+import ClientsList from "@/pages/ClientsList"; // Importar la nueva página
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
         <Route path='/' Component={MainLayout}>
           <Route index Component={Home} />
           <Route path='/manage-suppliers' Component={ManageSuppliers} />
+          <Route path='/registrar-cliente' Component={RegisterClient} />
+          <Route path="/lista_de_clientes" element={<ClientsList />} />
         </Route>
       </Routes>
     </Router>
