@@ -1,19 +1,17 @@
 import { Link } from 'react-router-dom'
 
+import TItleLayout from '@/layouts/TitleLayout'
+
 export default function ManageSuppliers() {
+  const data = []
+
   const handleSearch = (e) => {
     e.preventDefault()
   }
 
   return (
-    <>
-      <hgroup className='mt-5'>
-        <h2 className='font-semibold text-2xl py-5 container mx-auto'>
-          Datos de los proveedores
-        </h2>
-      </hgroup>
-
-      <section className='container mx-auto flex flex-col gap-5 mt-5'>
+    <TItleLayout title='Datos de los proveedores'>
+      <section className='container mx-auto flex flex-col gap-5'>
         <section className='flex justify-between items-center'>
           <form className='flex gap-5 items-center' onSubmit={handleSearch}>
             <label htmlFor='id_proveeder' className='text-gray-700 font-medium'>
@@ -34,7 +32,7 @@ export default function ManageSuppliers() {
           </form>
 
           <Link
-            to='/register-supplier'
+            to='/registrar-proveedor'
             className='bg-gray-300 p-3 rounded-md hover:bg-gray-400 duration-150'
           >
             Agregar proveedor
@@ -88,12 +86,6 @@ export default function ManageSuppliers() {
           </button>
         </section>
       </section>
-    </>
+    </TItleLayout>
   )
 }
-
-const data = [
-  { id: 1, nombre: 'null', direccion: 'null', contacto: 'null' },
-  { id: 2, nombre: 'null', direccion: 'null', contacto: 'null' },
-  { id: 3, nombre: 'null', direccion: 'null', contacto: 'null' },
-]

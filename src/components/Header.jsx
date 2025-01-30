@@ -83,7 +83,7 @@ const sections = [
     icon: 'person-fill-gear',
     label: 'Administración',
     options: [
-      { label: 'Gestión de proveedores', link: '/manage-suppliers' },
+      { label: 'Gestión de proveedores', link: '/gestionar-proveedores' },
       { label: 'Registrar personal de trabajo', link: '/#Registrar_personal_de_trabajo' },
       { label: 'Kardex del personal', link: '/#Kardex_del_personal' },
       { label: 'Listado de todo el personal', link: '/#Listado_de_todo_el_personal' },

@@ -5,6 +5,7 @@ import MainLayout from '@/layouts/MainLayout'
 import Home from '@/pages/Home'
 import Login from '@/pages/Login'
 import ManageSuppliers from '@/pages/ManageSuppliers'
+import RegisterSupplier from '@/pages/RegisterSupplier'
 
 function App() {
   return (
@@ -14,7 +15,8 @@ function App() {
 
         <Route path='/' Component={MainLayout}>
           <Route index Component={Home} />
-          <Route path='/manage-suppliers' Component={ManageSuppliers} />
+          <Route path='/gestionar-proveedores' Component={ManageSuppliers} />
+          <Route path='/registrar-proveedor' Component={RegisterSupplier} />
         </Route>
       </Routes>
     </Router>
