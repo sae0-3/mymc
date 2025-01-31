@@ -9,5 +9,9 @@ export default defineConfig({
     alias: {
       '@': path.resolve(__dirname, './src'),
     },
-  }
+  },
+  server: {
+    port: 3000, // 👈 Aquí estableces el puerto 3000
+    open: true, // Opcional: abre el navegador automáticamente
+  },
 })

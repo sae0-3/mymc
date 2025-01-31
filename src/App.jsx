@@ -1,28 +1,40 @@
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
-import 'bootstrap-icons/font/bootstrap-icons.min.css'
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import 'bootstrap-icons/font/bootstrap-icons.min.css';
 
-import MainLayout from '@/layouts/MainLayout'
-import Home from '@/pages/Home'
-import Login from '@/pages/Login'
-import ManageSuppliers from '@/pages/ManageSuppliers'
+import MainLayout from '@/layouts/MainLayout';
+import Home from '@/pages/Home';
+import Login from '@/pages/Login';
+import Register from '@/pages/Register'; // 👈 Importamos la página de registro
+import ManageSuppliers from '@/pages/ManageSuppliers';
 import RegisterClient from '@/pages/RegisterClient';
-import ClientsList from "@/pages/ClientsList"; // Importar la nueva página
+import ClientsList from "@/pages/ClientsList";
+import ProtectedRoute from "@/components/ProtectedRoute"; // 👈 Protección de rutas
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path='/login' Component={Login} />
+        {/* Rutas públicas */}
+        <Route path='/login' element={<Login />} />
+        <Route path='/register' element={<Register />} /> {/* Nueva página de registro */}
 
-        <Route path='/' Component={MainLayout}>
-          <Route index Component={Home} />
-          <Route path='/manage-suppliers' Component={ManageSuppliers} />
-          <Route path='/registrar-cliente' Component={RegisterClient} />
-          <Route path="/lista_de_clientes" element={<ClientsList />} />
+        {/* Rutas protegidas dentro de MainLayout */}
+        <Route
+          path='/'
+          element={
+            <ProtectedRoute>
+              <MainLayout />
+            </ProtectedRoute>
+          }
+        >
+          <Route index element={<Home />} />
+          <Route path='/manage-suppliers' element={<ManageSuppliers />} />
+          <Route path='/registrar-cliente' element={<RegisterClient />} />
+          <Route path='/lista_de_clientes' element={<ClientsList />} />
         </Route>
       </Routes>
     </Router>
-  )
+  );
 }
 
-export default App
+export default App;
