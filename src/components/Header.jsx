@@ -38,58 +38,58 @@ const sections = [
     label: 'Clientes',
     options: [
       { label: 'Registrar cliente', link: '/registrar-cliente' },
-      { label: 'Kardex del cliente', link: '/kardex_cliente' },
-      { label: 'Lista de clientes', link: '/lista_de_clientes' },  // 🔹 Enlace corregido
-      { label: 'Historial de compras', link: '/historial_compras' },
+      // { label: 'Kardex del cliente', link: '/kardex_cliente' },
+      { label: 'Lista de clientes', link: '/lista_de_clientes' },
+      // { label: 'Historial de compras', link: '/historial_compras' },
     ]
   },
-  {
-    icon: 'tag-fill',
-    label: 'Productos',
-    options: [
-      { label: 'Añadir marco', link: '/añadir_marco' },
-      { label: 'Personalizar marco', link: '/personalizar_marco' },
-      { label: 'Ver todos los marcos', link: '/ver_todos_los_marcos' },
-    ]
-  },
-  {
-    icon: 'hammer',
-    label: 'Materiales',
-    options: [
-      { label: 'Registrar material e insumo', link: '/registrar_material' },
-      { label: 'Lista de materiales e insumos', link: '/lista_materiales' },
-      { label: 'Inventario actual', link: '/inventario_actual' },
-      { label: 'Especificaciones técnicas', link: '/especificaciones_tecnicas' },
-    ]
-  },
-  {
-    icon: 'exclamation-triangle-fill',
-    label: 'Reportes',
-    options: [
-      { label: 'Entregas concluidas', link: '/entregas_concluidas' },
-      { label: 'Reporte de materiales', link: '/reporte_materiales' },
-      { label: 'Fabricaciones mensuales', link: '/fabricaciones_mensuales' },
-    ]
-  },
-  {
-    icon: 'card-list',
-    label: 'Pedidos',
-    options: [
-      { label: 'Registrar pedido', link: '/registrar_pedido' },
-      { label: 'Lista de pedidos pendientes', link: '/pedidos_pendientes' },
-      { label: 'Actualizar estado de pedido', link: '/actualizar_pedido' },
-      { label: 'Control de carga de trabajo', link: '/control_carga' },
-    ]
-  },
+  // {
+  //   icon: 'tag-fill',
+  //   label: 'Productos',
+  //   options: [
+  //     { label: 'Añadir marco', link: '/añadir_marco' },
+  //     { label: 'Personalizar marco', link: '/personalizar_marco' },
+  //     { label: 'Ver todos los marcos', link: '/ver_todos_los_marcos' },
+  //   ]
+  // },
+  // {
+  //   icon: 'hammer',
+  //   label: 'Materiales',
+  //   options: [
+  //     { label: 'Registrar material e insumo', link: '/registrar_material' },
+  //     { label: 'Lista de materiales e insumos', link: '/lista_materiales' },
+  //     { label: 'Inventario actual', link: '/inventario_actual' },
+  //     { label: 'Especificaciones técnicas', link: '/especificaciones_tecnicas' },
+  //   ]
+  // },
+  // {
+  //   icon: 'exclamation-triangle-fill',
+  //   label: 'Reportes',
+  //   options: [
+  //     { label: 'Entregas concluidas', link: '/entregas_concluidas' },
+  //     { label: 'Reporte de materiales', link: '/reporte_materiales' },
+  //     { label: 'Fabricaciones mensuales', link: '/fabricaciones_mensuales' },
+  //   ]
+  // },
+  // {
+  //   icon: 'card-list',
+  //   label: 'Pedidos',
+  //   options: [
+  //     { label: 'Registrar pedido', link: '/registrar_pedido' },
+  //     { label: 'Lista de pedidos pendientes', link: '/pedidos_pendientes' },
+  //     { label: 'Actualizar estado de pedido', link: '/actualizar_pedido' },
+  //     { label: 'Control de carga de trabajo', link: '/control_carga' },
+  //   ]
+  // },
   {
     icon: 'person-fill-gear',
     label: 'Administración',
     options: [
       { label: 'Gestión de proveedores', link: '/gestionar-proveedores' },
-      { label: 'Registrar personal de trabajo', link: '/registrar_personal' },
-      { label: 'Kardex del personal', link: '/kardex_personal' },
-      { label: 'Listado de todo el personal', link: '/listado_personal' },
-      { label: 'Soporte y ayuda', link: '/soporte' },
+      // { label: 'Registrar personal de trabajo', link: '/registrar_personal' },
+      // { label: 'Kardex del personal', link: '/kardex_personal' },
+      // { label: 'Listado de todo el personal', link: '/listado_personal' },
+      // { label: 'Soporte y ayuda', link: '/soporte' },
     ]
   }
 ];
