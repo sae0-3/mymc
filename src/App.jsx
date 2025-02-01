@@ -29,7 +29,7 @@ function App() {
           }
         >
           <Route index element={<Home />} />
-          <Route path='/manage-suppliers' element={<ManageSuppliers />} />
+          <Route path='/gestionar-proveedores' element={<ManageSuppliers />} />
           <Route path='/registrar-proveedor' element={<RegisterSupplier />} />
           <Route path='/registrar-cliente' element={<RegisterClient />} />
           <Route path='/lista_de_clientes' element={<ClientsList />} />
