@@ -10,6 +10,8 @@ import RegisterSupplier from '@/pages/RegisterSupplier';
 import RegisterClient from '@/pages/RegisterClient';
 import ClientsList from "@/pages/ClientsList";
 import ProtectedRoute from "@/components/ProtectedRoute"; // Protección de rutas
+import FrameList from "@/pages/FrameList";
+import AddFrame from "@/pages/AddFrame";
 
 function App() {
   return (
@@ -20,19 +22,22 @@ function App() {
         <Route path='/register' element={<Register />} /> {/* Página de registro */}
 
         {/* Rutas protegidas dentro de MainLayout */}
-        <Route
+        {/* <Route
           path='/'
           element={
             <ProtectedRoute>
               <MainLayout />
             </ProtectedRoute>
           }
-        >
+        > */}
+        <Route element={<MainLayout />} >
           <Route index element={<Home />} />
           <Route path='/gestionar-proveedores' element={<ManageSuppliers />} />
           <Route path='/registrar-proveedor' element={<RegisterSupplier />} />
           <Route path='/registrar-cliente' element={<RegisterClient />} />
           <Route path='/lista_de_clientes' element={<ClientsList />} />
+          <Route path='/lista_de_marcos' element={<FrameList />} />
+          <Route path='/añadir_marco' element={<AddFrame />} />
         </Route>
       </Routes>
     </Router>

@@ -43,15 +43,15 @@ const sections = [
       // { label: 'Historial de compras', link: '/historial_compras' },
     ]
   },
-  // {
-  //   icon: 'tag-fill',
-  //   label: 'Productos',
-  //   options: [
-  //     { label: 'Añadir marco', link: '/añadir_marco' },
-  //     { label: 'Personalizar marco', link: '/personalizar_marco' },
-  //     { label: 'Ver todos los marcos', link: '/ver_todos_los_marcos' },
-  //   ]
-  // },
+  {
+    icon: 'tag-fill',
+    label: 'Productos',
+    options: [
+      { label: 'Añadir marco', link: '/añadir_marco' },
+      // { label: 'Personalizar marco', link: '/personalizar_marco' },
+      { label: 'Ver todos los marcos', link: '/lista_de_marcos' },
+    ]
+  },
   // {
   //   icon: 'hammer',
   //   label: 'Materiales',

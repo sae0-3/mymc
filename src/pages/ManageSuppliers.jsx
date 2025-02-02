@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom'
 import TItleLayout from '@/layouts/TitleLayout'
 
 export default function ManageSuppliers() {
-  const data = []
+  const data = [{
+    id: 123, nombre: "dsd", direccion: "dasda", contacto: "dasa"
+  }]
 
   const handleSearch = (e) => {
     e.preventDefault()
