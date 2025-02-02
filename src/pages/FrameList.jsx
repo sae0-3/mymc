@@ -4,6 +4,13 @@ import { Search } from '@/components/Search'
 import { Table } from '@/components/Table'
 import TitleLayout from '@/layouts/TitleLayout'
 
+const columns = [
+  { accessorKey: 'codigo', header: 'Código' },
+  { accessorKey: 'material', header: 'Material' },
+  { accessorKey: 'disponibilidad', header: 'Disponibilidad' },
+  { accessorKey: 'precio_unitario', header: 'Precio Unitario (bs)' },
+]
+
 export default function FrameList() {
   const [filteredData, setFilteredData] = useState(data)
 
@@ -48,23 +55,4 @@ const data = [
   { id: 18, codigo: 'MRC018', material: 'Policarbonato', disponibilidad: 19, precio_unitario: 120 },
   { id: 19, codigo: 'MRC019', material: 'Plata', disponibilidad: 1, precio_unitario: 500 },
   { id: 20, codigo: 'MRC020', material: 'Oro', disponibilidad: 0, precio_unitario: 1000 },
-]
-
-const columns = [
-  {
-    accessorKey: 'codigo',
-    header: 'Código',
-  },
-  {
-    accessorKey: 'material',
-    header: 'Material',
-  },
-  {
-    accessorKey: 'disponibilidad',
-    header: 'Disponibilidad',
-  },
-  {
-    accessorKey: 'precio_unitario',
-    header: 'Precio Unitario (bs)',
-  },
 ]
