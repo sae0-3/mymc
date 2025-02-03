@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 import TitleLayout from '@/layouts/TitleLayout'
 
@@ -27,90 +28,90 @@ export default function RegisterSupplier() {
   return (
     <TitleLayout title='Resgistrar nuevo proveedor'>
       <form onSubmit={handleSubmit} className='space-y-10'>
-        <section className=''>
-          <h2 className='text-xl font-semibold mb-4'>Información del proveedor:</h2>
+        {/* <section className=''>
+          <h2 className='text-xl font-semibold mb-4'>Información del proveedor:</h2> */}
 
-          <section className='flex flex-wrap space-y-5 justify-between'>
-            <div className='w-full'>
-              <label htmlFor='nombre' className='block text-sm font-medium text-gray-700'>Nombre</label>
-              <input
-                value={proveedor.nombre}
-                onChange={handleChange}
-                type='text'
-                id='nombre'
-                name='nombre'
-                className='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#5e2222] focus:border-[#5e2222]' />
-            </div>
-            <div className='w-[calc(50%-1rem)]'>
-              <label htmlFor='nit' className='block text-sm font-medium text-gray-700'>NIT</label>
-              <input
-                value={proveedor.nit}
-                onChange={handleChange}
-                type='text'
-                id='nit'
-                name='nit'
-                className='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#5e2222] focus:border-[#5e2222]'
-              />
-            </div>
-            <div className='w-[calc(50%-1rem)]'>
-              <label htmlFor='contacto' className='block text-sm font-medium text-gray-700'>Contacto</label>
-              <input
-                value={proveedor.contacto}
-                onChange={handleChange}
-                type='text'
-                id='contacto'
-                name='contacto'
-                className='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#5e2222] focus:border-[#5e2222]'
-              />
-            </div>
-            <div className='w-[calc(50%-1rem)]'>
-              <label htmlFor='fechaRegistro' className='block text-sm font-medium text-gray-700'>Fecha de registro</label>
-              <input
-                value={proveedor.fechaRegistro}
-                onChange={handleChange}
-                type='date'
-                id='fechaRegistro'
-                name='fechaRegistro'
-                className='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#5e2222] focus:border-[#5e2222]'
-              />
-            </div>
-            <div className='w-[calc(50%-1rem)]'>
-              <label htmlFor='direccion' className='block text-sm font-medium text-gray-700'>Dirección</label>
-              <input
-                value={proveedor.direccion}
-                onChange={handleChange}
-                type='text'
-                id='direccion'
-                name='direccion'
-                className='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#5e2222] focus:border-[#5e2222]'
-              />
-            </div>
-            <div className='w-[calc(50%-1rem)]'>
-              <label htmlFor='numeroReferencia' className='block text-sm font-medium text-gray-700'>Número de referencia</label>
-              <input
-                value={proveedor.numeroReferencia}
-                onChange={handleChange}
-                type='text'
-                id='numeroReferencia'
-                name='numeroReferencia'
-                className='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#5e2222] focus:border-[#5e2222]'
-              />
-            </div>
-            <div className='w-[calc(50%-1rem)]'>
-              <label htmlFor='departamento' className='block text-sm font-medium text-gray-700'>Departamento</label>
-              <input
-                value={proveedor.departamento}
-                onChange={handleChange}
-                type='text'
-                id='departamento'
-                name='departamento'
-                className='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#5e2222] focus:border-[#5e2222]'
-              />
-            </div>
-          </section>
+        <section className='flex flex-wrap space-y-5 justify-between'>
+          <div className='w-full'>
+            <label htmlFor='nombre' className='block text-sm font-medium text-gray-700'>Nombre</label>
+            <input
+              value={proveedor.nombre}
+              onChange={handleChange}
+              type='text'
+              id='nombre'
+              name='nombre'
+              className='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#5e2222] focus:border-[#5e2222]' />
+          </div>
+          <div className='w-[calc(50%-1rem)]'>
+            <label htmlFor='nit' className='block text-sm font-medium text-gray-700'>NIT</label>
+            <input
+              value={proveedor.nit}
+              onChange={handleChange}
+              type='text'
+              id='nit'
+              name='nit'
+              className='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#5e2222] focus:border-[#5e2222]'
+            />
+          </div>
+          <div className='w-[calc(50%-1rem)]'>
+            <label htmlFor='contacto' className='block text-sm font-medium text-gray-700'>Contacto</label>
+            <input
+              value={proveedor.contacto}
+              onChange={handleChange}
+              type='text'
+              id='contacto'
+              name='contacto'
+              className='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#5e2222] focus:border-[#5e2222]'
+            />
+          </div>
+          <div className='w-[calc(50%-1rem)]'>
+            <label htmlFor='fechaRegistro' className='block text-sm font-medium text-gray-700'>Fecha de registro</label>
+            <input
+              value={proveedor.fechaRegistro}
+              onChange={handleChange}
+              type='date'
+              id='fechaRegistro'
+              name='fechaRegistro'
+              className='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#5e2222] focus:border-[#5e2222]'
+            />
+          </div>
+          <div className='w-[calc(50%-1rem)]'>
+            <label htmlFor='direccion' className='block text-sm font-medium text-gray-700'>Dirección</label>
+            <input
+              value={proveedor.direccion}
+              onChange={handleChange}
+              type='text'
+              id='direccion'
+              name='direccion'
+              className='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#5e2222] focus:border-[#5e2222]'
+            />
+          </div>
+          <div className='w-[calc(50%-1rem)]'>
+            <label htmlFor='numeroReferencia' className='block text-sm font-medium text-gray-700'>Número de referencia</label>
+            <input
+              value={proveedor.numeroReferencia}
+              onChange={handleChange}
+              type='text'
+              id='numeroReferencia'
+              name='numeroReferencia'
+              className='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#5e2222] focus:border-[#5e2222]'
+            />
+          </div>
+          <div className='w-[calc(50%-1rem)]'>
+            <label htmlFor='departamento' className='block text-sm font-medium text-gray-700'>Departamento</label>
+            <input
+              value={proveedor.departamento}
+              onChange={handleChange}
+              type='text'
+              id='departamento'
+              name='departamento'
+              className='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#5e2222] focus:border-[#5e2222]'
+            />
+          </div>
         </section>
+        {/* </section> */}
 
-        <section>
+        {/* <section>
           <section className='flex items-center space-x-3 mb-4'>
             <h2 className='text-xl font-semibold'>Productos</h2>
             <button className='p-2 bg-[#5e2222] hover:bg-[#451616] rounded-lg duration-100'>
@@ -146,7 +147,7 @@ export default function RegisterSupplier() {
               ))}
             </tbody>
           </table>
-        </section>
+        </section> */}
 
         <footer className='mt-6 flex space-x-4 justify-end'>
           <button
@@ -154,11 +155,11 @@ export default function RegisterSupplier() {
             className='inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-[#5e2222] hover:bg-[#451616] duration-100 focus:outline-none focus:ring-2 focus:ring-offset-2'>
             Guardar
           </button>
-          <button
-            type='button'
+          <Link
+            to='/gestionar-proveedores'
             className='inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-[#5e2222] hover:bg-[#451616] duration-100 focus:outline-none focus:ring-2 focus:ring-offset-2'>
             Salir
-          </button>
+          </Link>
         </footer>
       </form>
     </TitleLayout>
