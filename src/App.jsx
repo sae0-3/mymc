@@ -4,22 +4,23 @@ import 'bootstrap-icons/font/bootstrap-icons.min.css';
 import MainLayout from '@/layouts/MainLayout';
 import Home from '@/pages/Home';
 import Login from '@/pages/Login';
-import Register from '@/pages/Register'; // Importamos la página de registro
+import Register from '@/pages/Register';
 import ManageSuppliers from '@/pages/ManageSuppliers';
 import RegisterSupplier from '@/pages/RegisterSupplier';
 import RegisterClient from '@/pages/RegisterClient';
 import ClientsList from "@/pages/ClientsList";
-import ProtectedRoute from "@/components/ProtectedRoute"; // Protección de rutas
+import CustomizeFrame from "@/pages/CustomizeFrame";
+import AddFrame from "@/pages/AddFrame";
+import ViewAllFrames from "@/pages/ViewAllFrames"; // ✅ Nueva Importación
+import ProtectedRoute from "@/components/ProtectedRoute";
 
 function App() {
   return (
     <Router>
       <Routes>
-        {/* Rutas públicas */}
         <Route path='/login' element={<Login />} />
-        <Route path='/register' element={<Register />} /> {/* Página de registro */}
+        <Route path='/register' element={<Register />} />
 
-        {/* Rutas protegidas dentro de MainLayout */}
         <Route
           path='/'
           element={
@@ -33,6 +34,9 @@ function App() {
           <Route path='/registrar-proveedor' element={<RegisterSupplier />} />
           <Route path='/registrar-cliente' element={<RegisterClient />} />
           <Route path='/lista_de_clientes' element={<ClientsList />} />
+          <Route path='/añadir-marco' element={<AddFrame />} />               {/* ✅ Corrección */}
+          <Route path='/personalizar-marco' element={<CustomizeFrame />} />   {/* ✅ Corrección */}
+          <Route path='/ver-todos-los-marcos' element={<ViewAllFrames />} />  {/* ✅ Nueva Ruta */}
         </Route>
       </Routes>
     </Router>

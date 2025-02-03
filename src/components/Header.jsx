@@ -32,53 +32,54 @@ export const Header = () => {
   );
 };
 
+// ✅ Opciones del menú de navegación actualizadas
 const sections = [
   {
     icon: 'person-circle',
     label: 'Clientes',
     options: [
       { label: 'Registrar cliente', link: '/registrar-cliente' },
-      { label: 'Kardex del cliente', link: '/kardex_cliente' },
-      { label: 'Lista de clientes', link: '/lista_de_clientes' },  // 🔹 Enlace corregido
-      { label: 'Historial de compras', link: '/historial_compras' },
+      { label: 'Kardex del cliente', link: '/kardex-cliente' },
+      { label: 'Lista de clientes', link: '/lista-de-clientes' },
+      { label: 'Historial de compras', link: '/historial-compras' },
     ]
   },
   {
     icon: 'tag-fill',
     label: 'Productos',
     options: [
-      { label: 'Añadir marco', link: '/añadir_marco' },
-      { label: 'Personalizar marco', link: '/personalizar_marco' },
-      { label: 'Ver todos los marcos', link: '/ver_todos_los_marcos' },
+      { label: 'Añadir marco', link: '/añadir-marco' },               // ✅ Corregido
+      { label: 'Personalizar marco', link: '/personalizar-marco' },   // ✅ Corregido
+      { label: 'Ver todos los marcos', link: '/ver-todos-los-marcos' } // ✅ Corregido
     ]
   },
   {
     icon: 'hammer',
     label: 'Materiales',
     options: [
-      { label: 'Registrar material e insumo', link: '/registrar_material' },
-      { label: 'Lista de materiales e insumos', link: '/lista_materiales' },
-      { label: 'Inventario actual', link: '/inventario_actual' },
-      { label: 'Especificaciones técnicas', link: '/especificaciones_tecnicas' },
+      { label: 'Registrar material e insumo', link: '/registrar-material' },
+      { label: 'Lista de materiales e insumos', link: '/lista-materiales' },
+      { label: 'Inventario actual', link: '/inventario-actual' },
+      { label: 'Especificaciones técnicas', link: '/especificaciones-tecnicas' },
     ]
   },
   {
     icon: 'exclamation-triangle-fill',
     label: 'Reportes',
     options: [
-      { label: 'Entregas concluidas', link: '/entregas_concluidas' },
-      { label: 'Reporte de materiales', link: '/reporte_materiales' },
-      { label: 'Fabricaciones mensuales', link: '/fabricaciones_mensuales' },
+      { label: 'Entregas concluidas', link: '/entregas-concluidas' },
+      { label: 'Reporte de materiales', link: '/reporte-materiales' },
+      { label: 'Fabricaciones mensuales', link: '/fabricaciones-mensuales' },
     ]
   },
   {
     icon: 'card-list',
     label: 'Pedidos',
     options: [
-      { label: 'Registrar pedido', link: '/registrar_pedido' },
-      { label: 'Lista de pedidos pendientes', link: '/pedidos_pendientes' },
-      { label: 'Actualizar estado de pedido', link: '/actualizar_pedido' },
-      { label: 'Control de carga de trabajo', link: '/control_carga' },
+      { label: 'Registrar pedido', link: '/registrar-pedido' },
+      { label: 'Lista de pedidos pendientes', link: '/pedidos-pendientes' },
+      { label: 'Actualizar estado de pedido', link: '/actualizar-pedido' },
+      { label: 'Control de carga de trabajo', link: '/control-carga' },
     ]
   },
   {
@@ -86,9 +87,9 @@ const sections = [
     label: 'Administración',
     options: [
       { label: 'Gestión de proveedores', link: '/gestionar-proveedores' },
-      { label: 'Registrar personal de trabajo', link: '/registrar_personal' },
-      { label: 'Kardex del personal', link: '/kardex_personal' },
-      { label: 'Listado de todo el personal', link: '/listado_personal' },
+      { label: 'Registrar personal de trabajo', link: '/registrar-personal' },
+      { label: 'Kardex del personal', link: '/kardex-personal' },
+      { label: 'Listado de todo el personal', link: '/listado-personal' },
       { label: 'Soporte y ayuda', link: '/soporte' },
     ]
   }
