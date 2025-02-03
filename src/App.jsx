@@ -12,6 +12,7 @@ import ClientsList from "@/pages/ClientsList";
 import ProtectedRoute from "@/components/ProtectedRoute"; // Protección de rutas
 import FrameList from "@/pages/FrameList";
 import AddFrame from "@/pages/AddFrame";
+import RegisterMaterial from "@/pages/RegisterMaterial";
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
           <Route path='/lista_de_clientes' element={<ClientsList />} />
           <Route path='/lista_de_marcos' element={<FrameList />} />
           <Route path='/añadir_marco' element={<AddFrame />} />
+          <Route path='/registrar_material' element={<RegisterMaterial />} />
         </Route>
       </Routes>
     </Router>
