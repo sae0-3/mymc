@@ -18,7 +18,7 @@ export const Search = ({ action, label, placeholder = '', id }) => {
         id={id}
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        className='border-b border-gray-200 focus:border-gray-500 focus:outline-none focus:ring-0 p-2 w-full'
+        className='border-b border-gray-300 focus:border-gray-800 focus:outline-none focus:ring-0 p-2 w-full'
         placeholder={placeholder}
       />
       <button

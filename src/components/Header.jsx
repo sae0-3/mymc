@@ -57,7 +57,7 @@ const sections = [
     label: 'Materiales',
     options: [
       { label: 'Registrar material e insumo', link: '/registrar_material' },
-      { label: 'Lista de materiales e insumos', link: '/lista_materiales' },
+      { label: 'Lista de materiales e insumos', link: '/lista_de_materiales' },
       // { label: 'Inventario actual', link: '/inventario_actual' },
       // { label: 'Especificaciones técnicas', link: '/especificaciones_tecnicas' },
     ]

@@ -127,7 +127,7 @@ export default function RegisterMaterial() {
             className='inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-[#5e2222] hover:bg-[#451616] duration-100 focus:outline-none focus:ring-2 focus:ring-offset-2'
           >Guardar</button>
           <Link
-            to='/lista_materiales'
+            to='/lista_de_materiales'
             className='inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-[#5e2222] hover:bg-[#451616] duration-100 focus:outline-none focus:ring-2 focus:ring-offset-2'
           >Salir</Link>
         </section>
