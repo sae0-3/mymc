@@ -1,166 +1,224 @@
-import { useState } from 'react'
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { db } from "@/firebase";
+import { collection, addDoc, getDocs } from "firebase/firestore";
 
-import TitleLayout from '@/layouts/TitleLayout'
+const materialsList = [
+  { name: "Aluminio", price: 50 },
+  { name: "Madera", price: 40 },
+  { name: "PVC", price: 35 },
+  { name: "Acero Inoxidable", price: 60 },
+  { name: "Fibra de Vidrio", price: 70 },
+  { name: "Hierro Forjado", price: 55 },
+  { name: "Bronce", price: 80 },
+  { name: "Compuestos", price: 65 }
+];
 
-export default function RegisterSupplier() {
-  const data = []
-  const [proveedor, setProveedor] = useState({
-    nombre: '',
-    nit: '',
-    contacto: '',
-    fechaRegistro: '',
-    direccion: '',
-    numeroReferencia: '',
-    departamento: '',
-    productos: [],
-  })
+const generateCode = () => `MC-${Math.floor(1000 + Math.random() * 9000)}`;
 
-  const handleChange = ({ target: { name, value } }) => {
-    setProveedor({ ...proveedor, [name]: value })
-  }
+const CustomizeFrame = () => {
+  const [formData, setFormData] = useState({
+    codigo: generateCode(),
+    cliente: "",
+    largo: "",
+    alto: "",
+    ancho: "",
+    material: [],
+    unidadesFabricar: 0,
+    precioUnitario: 0,
+    precioTotal: 0,
+    fechaRegistro: ""
+  });
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log(proveedor)
-  }
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
+  const [showMaterialSelect, setShowMaterialSelect] = useState(false);
+  const [selectedMaterial, setSelectedMaterial] = useState("Seleccionar Materiales");
+  const [clientes, setClientes] = useState([]);
+  const [errorClientes, setErrorClientes] = useState("");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchClientes = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, "clientes"));
+        const clientesList = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        setClientes(clientesList);
+        if (clientesList.length === 0) {
+          setErrorClientes("❌ No hay clientes registrados.");
+        }
+      } catch (error) {
+        console.error("Error al obtener clientes:", error);
+        setErrorClientes("❌ Error al obtener clientes.");
+      }
+    };
+
+    fetchClientes();
+  }, []);
+
+  useEffect(() => {
+    const totalMaterialPrice = formData.material.reduce((acc, mat) => {
+      const materialData = materialsList.find((m) => m.name === mat);
+      return acc + (materialData ? materialData.price : 0);
+    }, 0);
+
+    const precioUnitario = totalMaterialPrice;
+    const precioTotal = precioUnitario * formData.unidadesFabricar;
+
+    setFormData((prevData) => ({
+      ...prevData,
+      precioUnitario,
+      precioTotal,
+    }));
+  }, [formData.material, formData.unidadesFabricar]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleMaterialClick = (material) => {
+    setFormData({ ...formData, material: [material] });
+    setSelectedMaterial(material);
+    setShowMaterialSelect(false);
+  };
+
+  const handleChangeMaterial = () => {
+    setFormData({ ...formData, material: [] });
+    setSelectedMaterial("Seleccionar Materiales");
+    setShowMaterialSelect(true);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setMessage("");
+
+    if (formData.unidadesFabricar <= 0) {
+      setMessage("❌ Las unidades deben ser mayores a 0.");
+      setLoading(false);
+      return;
+    }
+
+    try {
+      await addDoc(collection(db, "personalizaciones"), formData);
+      setMessage("✅ ¡Marco personalizado con éxito!");
+      setFormData({
+        codigo: generateCode(),
+        cliente: "",
+        largo: "",
+        alto: "",
+        ancho: "",
+        material: [],
+        unidadesFabricar: 0,
+        precioUnitario: 0,
+        precioTotal: 0,
+        fechaRegistro: ""
+      });
+      setSelectedMaterial("Seleccionar Materiales");
+    } catch (error) {
+      console.error("Error al personalizar el marco:", error);
+      setMessage("❌ Error al personalizar el marco.");
+    }
+
+    setLoading(false);
+  };
 
   return (
-    <TitleLayout title='Resgistrar nuevo proveedor'>
-      <form onSubmit={handleSubmit} className='space-y-10'>
-        <section className=''>
-          <h2 className='text-xl font-semibold mb-4'>Información del proveedor:</h2>
+    <div className="max-w-5xl mx-auto p-8 bg-white shadow-lg rounded-lg">
+      <h2 className="text-3xl font-bold mb-6 text-gray-800">Personalizar un marco</h2>
 
-          <section className='flex flex-wrap space-y-5 justify-between'>
-            <div className='w-full'>
-              <label htmlFor='nombre' className='block text-sm font-medium text-gray-700'>Nombre</label>
-              <input
-                value={proveedor.nombre}
-                onChange={handleChange}
-                type='text'
-                id='nombre'
-                name='nombre'
-                className='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#5e2222] focus:border-[#5e2222]' />
-            </div>
-            <div className='w-[calc(50%-1rem)]'>
-              <label htmlFor='nit' className='block text-sm font-medium text-gray-700'>NIT</label>
-              <input
-                value={proveedor.nit}
-                onChange={handleChange}
-                type='text'
-                id='nit'
-                name='nit'
-                className='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#5e2222] focus:border-[#5e2222]'
-              />
-            </div>
-            <div className='w-[calc(50%-1rem)]'>
-              <label htmlFor='contacto' className='block text-sm font-medium text-gray-700'>Contacto</label>
-              <input
-                value={proveedor.contacto}
-                onChange={handleChange}
-                type='text'
-                id='contacto'
-                name='contacto'
-                className='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#5e2222] focus:border-[#5e2222]'
-              />
-            </div>
-            <div className='w-[calc(50%-1rem)]'>
-              <label htmlFor='fechaRegistro' className='block text-sm font-medium text-gray-700'>Fecha de registro</label>
-              <input
-                value={proveedor.fechaRegistro}
-                onChange={handleChange}
-                type='date'
-                id='fechaRegistro'
-                name='fechaRegistro'
-                className='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#5e2222] focus:border-[#5e2222]'
-              />
-            </div>
-            <div className='w-[calc(50%-1rem)]'>
-              <label htmlFor='direccion' className='block text-sm font-medium text-gray-700'>Dirección</label>
-              <input
-                value={proveedor.direccion}
-                onChange={handleChange}
-                type='text'
-                id='direccion'
-                name='direccion'
-                className='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#5e2222] focus:border-[#5e2222]'
-              />
-            </div>
-            <div className='w-[calc(50%-1rem)]'>
-              <label htmlFor='numeroReferencia' className='block text-sm font-medium text-gray-700'>Número de referencia</label>
-              <input
-                value={proveedor.numeroReferencia}
-                onChange={handleChange}
-                type='text'
-                id='numeroReferencia'
-                name='numeroReferencia'
-                className='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#5e2222] focus:border-[#5e2222]'
-              />
-            </div>
-            <div className='w-[calc(50%-1rem)]'>
-              <label htmlFor='departamento' className='block text-sm font-medium text-gray-700'>Departamento</label>
-              <input
-                value={proveedor.departamento}
-                onChange={handleChange}
-                type='text'
-                id='departamento'
-                name='departamento'
-                className='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#5e2222] focus:border-[#5e2222]'
-              />
-            </div>
-          </section>
-        </section>
+      {message && (
+        <div className={`mb-4 p-3 text-white rounded-md ${message.includes("✅") ? "bg-green-600" : "bg-red-600"}`}>
+          {message}
+        </div>
+      )}
 
-        <section>
-          <section className='flex items-center space-x-3 mb-4'>
-            <h2 className='text-xl font-semibold'>Productos</h2>
-            <button className='p-2 bg-[#5e2222] hover:bg-[#451616] rounded-lg duration-100'>
-              <i className='bi bi-plus text-white' />
-            </button>
-          </section>
+      {errorClientes && (
+        <div className="mb-4 p-3 text-white bg-red-600 rounded-md">
+          {errorClientes}
+        </div>
+      )}
 
-          <table className='w-full border-collapse border border-gray-300 table-fixed'>
-            <thead className='bg-gray-200'>
-              <tr>
-                <th className='border border-gray-300 px-4 py-2 w-1/3'>Nombre</th>
-                <th className='border border-gray-300 px-4 py-2 w-1/3'>Descripción</th>
-                <th className='border border-gray-300 px-4 py-2 w-[10%]' />
-              </tr>
-            </thead>
-            <tbody>
-              {data.map(({ id, nombre, descripcion }) => (
-                <tr key={id} className='hover:bg-gray-100'>
-                  <td className='border border-gray-300 px-4 py-2 truncate'>
-                    {nombre}
-                  </td>
-                  <td className='border border-gray-300 px-4 py-2 truncate'>
-                    {descripcion}
-                  </td>
-                  <td className='border border-gray-300 py-2'>
-                    <div className='flex justify-evenly'>
-                      <button>
-                        <i className='bi bi-trash-fill text-2xl' />
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </section>
+      <form className="grid grid-cols-1 md:grid-cols-2 gap-6" onSubmit={handleSubmit}>
+        <label>Cliente
+          <select name="cliente" value={formData.cliente} onChange={handleChange} className="border p-3 rounded-lg" required>
+            <option value="">Seleccionar Cliente</option>
+            {clientes.map((cliente) => (
+              <option key={cliente.id} value={cliente.nombre}>{cliente.nombre}</option>
+            ))}
+          </select>
+        </label>
 
-        <footer className='mt-6 flex space-x-4 justify-end'>
+        <label>Código del Marco
+          <input name="codigo" value={formData.codigo} className="border p-3 rounded-lg bg-gray-100" readOnly />
+        </label>
+
+        <label>Largo (cm)
+          <input name="largo" type="number" min="0" value={formData.largo} onChange={handleChange} className="border p-3 rounded-lg" required />
+        </label>
+
+        <label>Alto (cm)
+          <input name="alto" type="number" min="0" value={formData.alto} onChange={handleChange} className="border p-3 rounded-lg" required />
+        </label>
+
+        <label>Ancho (cm)
+          <input name="ancho" type="number" min="0" value={formData.ancho} onChange={handleChange} className="border p-3 rounded-lg" required />
+        </label>
+
+        {formData.material.length > 0 && (
+          <label>Material Seleccionado
+            <div className="flex items-center gap-2">
+              <input name="material" value={formData.material[0]} className="border p-3 rounded-lg bg-gray-100" readOnly />
+              <button
+                type="button"
+                onClick={handleChangeMaterial}
+                className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition"
+              >
+                Cambiar
+              </button>
+            </div>
+          </label>
+        )}
+
+        <label>Unidades a Fabricar
+          <input name="unidadesFabricar" type="number" min="1" value={formData.unidadesFabricar} onChange={handleChange} className="border p-3 rounded-lg" required />
+        </label>
+
+        <label>Precio Unitario (Bs)
+          <input name="precioUnitario" value={formData.precioUnitario.toFixed(2)} className="border p-3 rounded-lg bg-gray-100" readOnly />
+        </label>
+
+        <label>Fecha de Registro
+          <input name="fechaRegistro" type="date" value={formData.fechaRegistro} onChange={handleChange} className="border p-3 rounded-lg" required />
+        </label>
+
+        <div className="col-span-1 md:col-span-2">
+          <label>Precio Total:
+            <input name="precioTotal" value={formData.precioTotal.toFixed(2)} className="border p-3 rounded-lg bg-gray-100" readOnly />
+          </label>
+        </div>
+
+        <div className="col-span-1 md:col-span-2 flex justify-end gap-4">
           <button
-            type='submit'
-            className='inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-[#5e2222] hover:bg-[#451616] duration-100 focus:outline-none focus:ring-2 focus:ring-offset-2'>
-            Guardar
+            type="submit"
+            className="bg-[#5e2222] text-white px-6 py-3 rounded-lg hover:bg-[#4a1b1b] transition duration-300"
+            disabled={loading}
+          >
+            {loading ? "Guardando..." : "Guardar"}
           </button>
+
           <button
-            type='button'
-            className='inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-[#5e2222] hover:bg-[#451616] duration-100 focus:outline-none focus:ring-2 focus:ring-offset-2'>
+            type="button"
+            onClick={() => navigate("/ver-todos-los-marcos")}
+            className="bg-gray-400 text-white px-6 py-3 rounded-lg hover:bg-gray-500 transition duration-300"
+          >
             Salir
           </button>
-        </footer>
+        </div>
       </form>
-    </TitleLayout>
-  )
-}
+    </div>
+  );
+};
+
+export default CustomizeFrame;
